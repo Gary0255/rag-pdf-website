@@ -25,6 +25,7 @@ import gradio as gr
 from utils.upload_file import UploadFile
 from utils.chatbot import ChatBot
 from utils.ui_settings import UISettings
+from fastapi import FastAPI
 
 
 with gr.Blocks() as demo:
@@ -113,4 +114,6 @@ with gr.Blocks() as demo:
 
 
 if __name__ == "__main__":
-    demo.launch()
+    app = FastAPI()
+    app = gr.mount_gradio_app(app,demo,path='/')
+    # demo.launch()
